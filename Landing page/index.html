@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CyberNexxus Community</title>
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@600&family=Roboto&display=swap" rel="stylesheet">
+  <style>
+    body {
+      background: linear-gradient(135deg, #211e2a 60%, #3f2ca4 100%);
+      color: #ecf2f8;
+      font-family: 'Roboto', sans-serif;
+      margin: 0;
+      min-height: 100vh;
+    }
+    header {
+      background: rgba(28,32,50,0.90);
+      box-shadow: 0 2px 8px #201168;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1rem 5%;
+    }
+    .logo {
+      font-family: 'Orbitron', sans-serif;
+      font-size: 2.2rem;
+      color: #00ffe7;
+      letter-spacing: 2px;
+      text-shadow: 0 0 8px #19f8fa;
+    }
+    nav a {
+      color: #f5d300;
+      margin-left: 2rem;
+      text-decoration: none;
+      font-weight: bold;
+      transition: color 0.3s;
+    }
+    nav a:hover {
+      color: #00ffe7;
+    }
+    .hero {
+      text-align: center;
+      padding: 4rem 2rem;
+      background: radial-gradient(circle, rgba(44,27,103,0.6) 30%, transparent 80%);
+      margin-bottom: 3rem;
+    }
+    .hero h1 {
+      font-size: 3rem;
+      font-family: 'Orbitron', sans-serif;
+      letter-spacing: 1.5px;
+      color: #f5d300;
+      text-shadow: 0 0 18px #042c54;
+    }
+    .hero p {
+      color: #c0faf5;
+      font-size: 1.3rem;
+      margin-bottom: 2rem;
+    }
+    .cta-btn {
+      background: linear-gradient(90deg, #00ffe7, #f5d300);
+      color: #231d48;
+      border: none;
+      border-radius: 34px;
+      padding: 1rem 3rem;
+      font-size: 1.1rem;
+      font-weight: bold;
+      cursor: pointer;
+      box-shadow: 0 0 16px #00ffe7aa;
+      transition: background 0.3s, color 0.3s;
+    }
+    .cta-btn:hover {
+      background: #231d48;
+      color: #00ffe7;
+    }
+    .about {
+      display: flex;
+      justify-content: space-around;
+      gap: 2rem;
+      margin: 2rem 5%;
+    }
+    .card {
+      background: rgba(22,26,58,0.90);
+      border-radius: 18px;
+      flex: 1;
+      min-width: 240px;
+      padding: 2rem;
+      margin: 1rem 0;
+      box-shadow: 0 4px 32px #00ffe740;
+      transition: transform 0.2s;
+    }
+    .card:hover {
+      transform: translateY(-6px) scale(1.03);
+      box-shadow: 0 0 32px #f5d30080;
+    }
+    footer {
+      background: #1b1832;
+      color: #c0c0e1;
+      text-align: center;
+      padding: 1.3rem;
+      margin-top: 2rem;
+      font-size: 1rem;
+      letter-spacing: 1px;
+    }
+    @media (max-width: 780px) {
+      .about {
+        flex-direction: column;
+        gap: 1rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="logo">CyberNexxus</div>
+    <nav>
+      <a href="#">Home</a>
+      <a href="#">About</a>
+      <a href="#">Projects</a>
+      <a href="#">Join</a>
+    </nav>
+  </header>
+  <section class="hero">
+    <h1>Your Gateway to the AI & Cyber Community</h1>
+    <p>Connect, learn, and build with hackers, learners, and creators shaping the future of cybersecurity and AI.</p>
+    <button class="cta-btn">Join CyberNexxus</button>
+  </section>
+  <section class="about">
+    <div class="card">
+      <h2>AI Meetups</h2>
+      <p>Participate in AI and cybersecurity discussions, hackathons, and virtual meetups weekly.</p>
+    </div>
+    <div class="card">
+      <h2>Project Showcases</h2>
+      <p>Share your projects, explore new ideas, and get feedback—all in a collaborative cyber environment.</p>
+    </div>
+    <div class="card">
+      <h2>Learn & Grow</h2>
+      <p>Access curated tutorials, mentorship, and opportunities for hands-on experience.</p>
+    </div>
+  </section>
+  <footer>
+    &copy; 2025 CyberNexxus. All rights reserved. | Follow us: @cybernexxus
+  </footer>
+</body>
+</html>
