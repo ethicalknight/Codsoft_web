@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Interactive Calculator</title>
+  <style>
+    :root {
+      --main-bg: #252738;
+      --button-bg: #33334d;
+      --accent: #00ffe7;
+      --accent2: #f5d300;
+      --text: #fff;
+    }
+    body {
+      background: var(--main-bg);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      font-family: 'Roboto', sans-serif;
+    }
+    .calculator {
+      background: #292b3b;
+      padding: 2rem;
+      border-radius: 18px;
+      box-shadow: 0 5px 36px #00ffe790;
+      min-width: 320px;
+    }
+    .display {
+      background: #1e1f2a;
+      color: var(--accent);
+      padding: 1rem;
+      font-size: 2rem;
+      border-radius: 12px;
+      margin-bottom: 1rem;
+      text-align: right;
+      letter-spacing: 1px;
+      min-height: 2.8rem;
+      overflow-x: auto;
+    }
+    .keys {
+      display: grid;
+      grid-template-columns: repeat(4, 60px);
+      gap: 12px;
+      justify-content: center;
+    }
+    .key {
+      background: var(--button-bg);
+      color: var(--text);
+      font-size: 1.3rem;
+      padding: 1rem;
+      border: none;
+      border-radius: 10px;
+      cursor: pointer;
+      transition: background 0.2s, color 0.2s;
+      box-shadow: 0 2px 8px #0004;
+      outline: none;
+    }
+    .key.operator {
+      background: var(--accent2);
+      color: #252738;
+    }
+    .key.equal {
+      background: var(--accent);
+      color: #252738;
+      grid-column: span 2;
+      font-weight: bold;
+    }
+    .key.clear {
+      background: #ff416c;
+      color: #fff;
+    }
+    .key:active {
+      filter: brightness(1.1);
+    }
+    @media(max-width:450px) {
+      .calculator { min-width: 95vw; }
+      .keys { grid-template-columns: repeat(4, 1fr); }
+    }
+  </style>
+</head>
+<body>
+  <div class="calculator">
+    <div id="display" class="display">0</div>
+    <div class="keys">
+      <button class="key clear">C</button>
+      <button class="key operator">÷</button>
+      <button class="key operator">×</button>
+      <button class="key operator">-</button>
+      <button class="key">7</button>
+      <button class="key">8</button>
+      <button class="key">9</button>
+      <button class="key operator">+</button>
+      <button class="key">4</button>
+      <button class="key">5</button>
+      <button class="key">6</button>
+      <button class="key equal">=</button>
+      <button class="key">1</button>
+      <button class="key">2</button>
+      <button class="key">3</button>
+      <button class="key">0</button>
+      <button class="key">.</button>
+    </div>
+  </div>
+  <script>
+    const display = document.getElementById('display');
+    const keys = document.querySelector('.keys');
+    let currentInput = '';
+    let resetNext = false;
+
+    keys.addEventListener('click', function(e) {
+      if (!e.target.classList.contains('key')) return;
+      const value = e.target.textContent;
+
+      if (e.target.classList.contains('clear')) {
+        currentInput = '';
+        display.textContent = '0';
+        return;
+      }
+
+      if (resetNext && !['+', '-', '×', '÷'].includes(value)) {
+        currentInput = '';
+        resetNext = false;
+      }
+
+      if ('0123456789.'.includes(value)) {
+        if (value === '.' && currentInput.split(/[\+\-\×\÷]/).pop().includes('.')) return;
+        currentInput += value;
+      } else if (['+', '-', '×', '÷'].includes(value)) {
+        if (currentInput === '' && value === '-') {
+          currentInput = '-';
+        } else if (currentInput !== '' && !['+', '-', '×', '÷'].includes(currentInput.slice(-1))) {
+          currentInput += value;
+        }
+      } else if (value === '=') {
+        try {
+          let exp = currentInput.replace(/×/g, '*').replace(/÷/g, '/');
+          let result = eval(exp);
+          display.textContent = result;
+          currentInput = '' + result;
+          resetNext = true;
+          return;
+        } catch {
+          display.textContent = 'Error';
+          currentInput = '';
+          resetNext = true;
+          return;
+        }
+      }
+
+      display.textContent = currentInput === '' ? '0' : currentInput;
+    });
+  </script>
+</body>
+</html>
